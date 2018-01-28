@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/custom.css">    
+    
+    
+    <!-- Include your CSS here -->
+</head>
+<body ng-app="myApp">
+    
+    <!-- Add your site or application content here -->
+    <div class="container" ng-controller="myCtrl">
+		<div class="loading" ng-show="cData.loading">LOADING...</div>
+        <div class="row">
+            <div class="col-md-3 sidebar">
+				<div class="row form-group">
+					<div class="form-inline">
+						<label for="partnerlist">Partner: </label>
+						<select id="partnerlist" class="form-control">
+							<option value="">All</option>
+							<option ng-repeat="partner in cData.partners" value="{{partner.products}}">{{partner.name}}</option>
+						</select>
+					</div>
+				</div>
+                <div class="row form-group">
+                    <input type="text" class="form-control" ng-model="cData.searchInput" placeholder="Filter products"/>
+                </div>                
+                <div class="row">
+                    <ul class="list-unstyled prod_list">
+                        <li ng-repeat="product in cData.products | filter:cData.searchInput" ng-click="displayProductDetails(product)">{{product.name}}</li>
+                    </ul>                    
+                </div>
+            </div>            
+            <div class="col-md-8 col-md-offset-1 main">
+                <h1>Product Detail</h1>                
+                <div class="row" ng-if="cData.selectedProduct">                    
+                    <div class="col-md-3 img-container">
+                        <img ng-src="{{cData.selectedProduct.imgPath}}" class="img-responsive" ng-click="buyProduct(cData.selectedProduct)"/>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>{{cData.selectedProduct.name}}</h3>
+                        <p>{{cData.selectedProduct.description}}</p>
+                        <div><a class="btn btn-primary" ng-click="buyProduct(cData.selectedProduct)">Buy Product</a>
+						<a class="btn btn-warning" ng-click="cData.selectedProduct = null">Cancel</a></div>
+                    </div>                    
+                </div>
+            </div>
+        </div>              
+
+    </div>
+ 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+    <script src="script/app.js"></script>
+    <script src="script/controller/controller.js"></script>
+    <script src="script/service/helperService.js"></script>
+    <script src="script/service/myApisService.js"></script>
+    
+</body>
+</html>

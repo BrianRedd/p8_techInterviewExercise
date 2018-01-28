@@ -1,0 +1,41 @@
+/* custom styles go here */
+.loading {
+	width: 200px;
+	height: 100px;
+	color: #F00;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -100px;
+	border: 1px solid #F00;
+	background-color: #FFF;
+	text-align: center;
+	line-height: 100px;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.sidebar {
+	padding-top: 30px;
+}
+
+.img-responsive {
+	background-color: #000;
+	margin-top: 23px;
+	cursor: pointer;
+}
+
+.prod_list li {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+	padding-left: 10px;
+}
+
+.prod_list li:hover {
+	background-color: #DDD;
+	text-decoration: underline;
+}
